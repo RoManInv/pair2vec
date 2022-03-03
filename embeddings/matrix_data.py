@@ -127,7 +127,7 @@ class TripletIterator():
 def create_vocab(config, field):
     vocab_path = getattr(config, 'vocab_file', os.path.join(config.triplet_dir, "vocab.txt"))
     tokens = None
-    with open(vocab_path) as f:
+    with open(vocab_path, 'r', encoding = 'utf-8') as f:
         text = f.read()
         tokens = text.rstrip().split('\n')
     specials = ['<unk>', '<pad>', '<X>', '<Y>'] if config.compositional_rels else ['<unk>', '']

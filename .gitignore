@@ -10,3 +10,7 @@ scratch/*
 ./models
 .mypy_cache
 .vector_cache
+**/*.pt
+**/*.txt
+**/*.tar.gz
+experiments/pair2vec/*.json

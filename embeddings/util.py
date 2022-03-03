@@ -30,8 +30,15 @@ def masked_softmax(vector, mask):
     return result
 
 def load_model(resume_snapshot, model):
+    if torch.cuda.is_available():
+        device = True
+    else:
+        device = False
     if os.path.isfile(resume_snapshot):
-        checkpoint = torch.load(resume_snapshot)
+        if(device):
+            checkpoint = torch.load(resume_snapshot)
+        else:
+            checkpoint = torch.load(resume_snapshot, map_location=torch.device('cpu'))
         print("Loaded checkpoint '{}' (epoch {} iter: {} train_loss: {}, dev_loss: {}, train_pos:{}, train_neg: {}, dev_pos: {}, dev_neg: {})"
               .format(resume_snapshot, checkpoint['epoch'], checkpoint['iterations'], checkpoint['train_loss'], checkpoint['dev_loss'], checkpoint['train_pos'], checkpoint['train_neg'], checkpoint['dev_pos'], checkpoint['dev_neg']))
         model.load_state_dict(checkpoint['state_dict'], strict=True)
