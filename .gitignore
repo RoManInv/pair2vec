@@ -14,3 +14,4 @@ scratch/*
 **/*.txt
 **/*.tar.gz
 experiments/pair2vec/*.json
+data/**.*
