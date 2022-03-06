@@ -38,18 +38,13 @@ def main():
         for line in fin:
             wordlist.append(line.strip())
     vocab = Vocab(wordlist, vectors = vectors, vectors_cache = __VECTOR_CACHE__)
-    # vectors = vocab.load_vectors('fasttext.en.300d')
-    # print(vectors)
-    # vocab = Vocab(vectors)
-    vec1 = vectors.__getitem__('germany')
-    vec2 = vectors.__getitem__('berlin')
-    print(model([vec1, vec2]))
-    # print(vec1)
-    # print(model(['germany', 'france']))
-    # print(SpanRepresentation(config, 300, vec1))
-    # with open(__DICT_PATI__, 'rb') as f:
-    #     pair2index = pickle.load(f)
-    # print(pair2index)
+    # vec1 = vectors.__getitem__('germany')
+    # vec2 = vectors.__getitem__('berlin')
+    # print(model((vec1, vec2, None, None)))
+    trip1 = 'data/preprocessed/softsample/triplets_2.npy'
+    triplet1 = np.load(trip1)
+    print(triplet1[0])
+
 
 
 if __name__ == '__main__':

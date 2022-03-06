@@ -15,3 +15,5 @@ scratch/*
 **/*.tar.gz
 experiments/pair2vec/*.json
 data/**.*
+**/*.npy
+**/preprocessed/

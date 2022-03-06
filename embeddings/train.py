@@ -92,6 +92,8 @@ def train(train_data, dev_data, train_iterator, dev_iterator, model, config, opt
         train_eval_stats = EvaluationStatistics(config)
         
         for batch_index, batch in enumerate(train_iterator(train_data, device=None, train=True)):
+            with open('data/check/train_batch.txt', 'w+') as f:
+                f.write(str(batch))
             # Switch model to training mode, clear gradient accumulators
             model.train()
             opt.zero_grad()
